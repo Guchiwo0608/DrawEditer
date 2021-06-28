@@ -118,7 +118,7 @@ class ViewPanel extends JPanel implements Observer {
 
 class DrawFrame extends JFrame {
   DrawModel model;
-  ViewPanel view;
+  ViewPanel view1, view2, view3, view4;
   DrawController cont;
   JComboBox<String> comboBox = new JComboBox<>();
   public DrawFrame() {
@@ -127,14 +127,23 @@ class DrawFrame extends JFrame {
     comboBox.addItem("直線");
     model = new DrawModel();
     cont = new DrawController(model);
-    view = new ViewPanel(model,cont);
+    view1 = new ViewPanel(model,cont);
+    view2 = new ViewPanel(model,cont);
+    view3 = new ViewPanel(model,cont);
+    view4 = new ViewPanel(model,cont);
     this.setBackground(Color.black);
     this.setTitle("Draw Editor");
     this.setSize(1000, 1000);
-    this.setLayout(new BorderLayout());
-    this.add(view);
+    this.setLayout(new GridLayout(2, 2));
+    this.add(view1);
+    this.add(view2);
+    this.add(view3);
+    this.add(view4);
     this.add(comboBox, BorderLayout.NORTH);
-    view.setBorder(new LineBorder(Color.blue, 3));
+    view1.setBorder(new LineBorder(Color.blue, 3));
+    view2.setBorder(new LineBorder(Color.blue, 3));
+    view3.setBorder(new LineBorder(Color.blue, 3));
+    view4.setBorder(new LineBorder(Color.blue, 3));
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setVisible(true);
   }
